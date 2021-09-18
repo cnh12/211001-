@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException{  //예외처리
+		// TODO Auto-generated method stub
+		
+		//Scanner sc = new Scanner(System.in);
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		String str = bf.readLine(); //무조건 한줄 전체(공백포함) 입력
+		StringTokenizer st = new StringTokenizer(str);  //공백으로 나눠줌
+		System.out.println(st.nextToken()); //한번 출력할때마다 다음 덩어리 출력
+		System.out.println(st.nextToken());
+		bw.write(st.nextToken()+"\n");
+		bw.write(str+"\n");
+		String arr[] = str.split(" ");  //문자열.split(" ")으로 원하는 문자로 나누어 String형 배열에 저장 가능
+		//String arr[] = str.split("\\.");  // . 으로 나누고 싶을떄는 .이 아닌 \\. 으로 입력
+		for(int i = 0; i < arr.length; i++) {
+			bw.write(arr[i]+"\n");
+		}
+		
+		bw.flush(); //BufferedWriter사용이 끝났으면 flush와 close를 해줘야함
+		bw.close();
+		
+		
+	}
+
+}
