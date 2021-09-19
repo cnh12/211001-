@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int n = 0;
+		
+		gogo:	//반복문의 이름(label)을 정함
+		while(true){
+			System.out.println("바깥 while 위");
+			while(true){
+				n++;
+				if(n>=10) break gogo;	//해당 label이 가리키는 반복문에 대해 break 적용
+				if(n>=5) break;	//그냥 break는 가장 가까운 반복문만 탈출
+				System.out.println(n);
+			}
+			System.out.println("바깥 while 아래");
+		}		
+		System.out.println("프로그램 끝");
+	}
+	
+	/* 출력결과
+	    바깥 while 위
+		1
+		2
+		3
+		4
+		바깥 while 아래
+		바깥 while 위
+		바깥 while 아래
+		바깥 while 위
+		바깥 while 아래
+		바깥 while 위
+		바깥 while 아래
+		바깥 while 위
+		바깥 while 아래
+		바깥 while 위
+		프로그램 끝
+	 */
+	
+}
