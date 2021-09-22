@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+import java.util.Scanner;
+
+public class Main3 {
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		
+		//Scanner sc = new Scanner(System.in);
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		String str = bf.readLine();
+		
+		/*
+		Integer.parseInt로 진법변환 가능
+		parseInt의 인자는 (문자열, 몇진법인지)
+		str이 해당 진법에 맞게 정의된 문자열일때만 가능
+		 */		
+		int a = Integer.parseInt(str, 16);	
+
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i <= a; i++) {
+			//printf서식 중 %x는 16진법, %X로 하면 대문자로 16진법 표현 가능
+			System.out.printf("%X*%X=%X\n",a,i,a*i);
+		}
+		
+		
+		bw.flush();
+		bw.close();
+		
+		
+	}
+
+}
