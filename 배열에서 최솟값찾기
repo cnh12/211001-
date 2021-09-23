@@ -1,0 +1,62 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main4 {
+
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		
+		//Scanner sc = new Scanner(System.in);
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		String str = bf.readLine();
+		
+		String arr[] = str.split(" ");
+
+		int a = Integer.parseInt(arr[0]);		
+
+		Scanner sc = new Scanner(System.in);
+		int cnt = 0;
+		int num_arr[] = new int[a];
+		while(true) {
+			int c = sc.nextInt();
+			num_arr[cnt] = c;
+			cnt++;
+			if(cnt == 10) break;
+		}
+		
+		//배열에서 최소값찾기
+		
+		//1. for문을 이용하는 방법
+		int min = num_arr[0];
+		for(int i = 0; i < a; i++) {
+			if(num_arr[i]<min) min = num_arr[i]; 
+		}
+		System.out.println(min);
+		
+		//2. Arrays.sort() 이용
+		Arrays.sort(num_arr);
+		System.out.println(num_arr[0]);
+		
+		//3. Arrays.stream()이용
+		System.out.println(Arrays.stream(num_arr).min().getAsInt());	//최소값
+		System.out.println(Arrays.stream(num_arr).max().getAsInt());	//최대값
+		
+		bw.flush();
+		bw.close();
+		
+		
+		//변수명 한번에 다 바꾸기
+		//Alt + Shift + R
+		
+		
+	}
+
+}
