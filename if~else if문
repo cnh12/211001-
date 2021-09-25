@@ -1,0 +1,30 @@
+
+public class Main6 {
+	
+	//if~else if 문에서 하나의 if문 안에서 변수의 값이 변경되어
+	//밑에 if문의 조건에도 참이 될 수 있는 경우
+	//else로 다 이어져있는 한 덩어리라면 pass
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int x = 3;
+		int cnt = 0;
+
+		if(x == 3) {
+			System.out.println("x는 3");
+			x++; cnt++;
+		}
+		else if(x == 4) {
+			System.out.println("x는 4");
+			x++; cnt++;
+		}
+		else if(x == 5) {
+			cnt++;
+		}
+		
+		System.out.println(cnt);
+
+	}
+
+}
