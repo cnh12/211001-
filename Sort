@@ -1,0 +1,54 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+	static void selectionSort(int[] v, int n) {
+		for(int i = 0; i<n-1; i++) { 
+			int min = i;
+			for(int j = i+1; j < n; j++) {
+				if(v[j]<v[min]) min = j; 
+				//중복 값에 대해 입력값의 순서를 보장(stable sort)해주기 위해 <=이 아닌 <사용
+				//i=1일때 비교연산 n-1번, i=2일때 비교연산 n-2번 시행
+				//-> n-1+n-2+...+1 = (n-1)n/2번 연산 시행 -> O(n^2)알고리즘
+			}
+			int t = v[i];
+			v[i] = v[min];
+			v[min] = t;
+		}
+	}
+	
+	static void insertionSort(int[] v, int n) {
+		for(int i = 1; i < n; i++) {
+			//비교횟수 최대 : 1+2+...+n-1 = n(n-1)/2 -> O(n^2)알고리즘
+			//그러나 어느정도 정렬이 되어있다고 하면(경향성이 있으면) 선택정렬보다 빨리 끝날 수 있음
+			int t = v[i], last = i-1;
+			while(last >= 0 && v[last] > t) {
+				v[last+1] = v[last];
+				last--;
+			}
+			v[last+1] = t;
+		}		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Random rand = new Random(100);
+		Scanner scan = new Scanner(System.in);
+		int n = scan.nextInt();
+		int[] v = new int[n];
+		for(int i = 0; i < n; i++) {
+			v[i] = rand.nextInt(1000000);
+		}
+		long ts = System.currentTimeMillis();
+		selectionSort(v, n);
+		insertionSort(v, n);
+		ts = System.currentTimeMillis()-ts;
+		for(int i = 0; i<10; i++) {
+			System.out.println(v[i]);
+		}
+		System.out.println("Elapsed time is "+ts+"ms.");
+
+	}
+
+}
