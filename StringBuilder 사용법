@@ -1,0 +1,71 @@
+
+public class Main10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*
+		 * StringBuilder 사용
+		 * String 인스턴스는 한번 생성 후 수정을 못하므로 StringBuilder 이용
+		 * 
+		 * [ String 클래스와 동일 메소드 ]			
+			charAt() - 특정 인덱스 위치의 문자 반환
+			indexOf() / lastIndexOf() - 문자열 검색해서 위치 반환
+			length() - 문자열 길이 반환
+			replace() - 검색된 문자열 교체
+			substring() - 특정 인덱스 범위 내 문자열을 복사해서 새로 생성된 인스턴스 반환
+			toString() - 문자열 출력
+		 */
+		
+		//append() : 문자열 추가
+		//length()는 실제 데이터가 들어있는 문자열 자체의 길이이고 capacity()는 현재 배열 사이즈
+		StringBuilder a = new StringBuilder("Hello");		
+		a.append(" World");
+		System.out.println(a); 		// "Hello World"
+		System.out.println(a.length()); 	// 11
+		System.out.println(a.capacity()); 	// 21
+		
+		//delete() : 매개변수로 전달받은 인덱스 사이의 문자열 제거, (시작인덱스, 끝인덱스+1)
+		a.delete(6, 9);         // (6~8 삭제)
+		System.out.println(a);  // "Hello ld"
+		
+		//deleteCharAt() : 특정 인덱스의 문자 하나만 삭제		
+		a.deleteCharAt(6);	// a.delete(6,7) 과 같음
+		System.out.println(a); 	//"Hello d"
+		
+		//insert() : 특정 위치에 문자열 삽입
+		a.insert(6, "Worl");
+		System.out.println(a);			// "Hello World"
+		a.insert(5, 55);	//숫자도 삽입 가능
+		System.out.println(a); 			// "Hello55 World"
+		a.delete(5, 7);         // (5~6 삭제)
+		System.out.println(a);			// "Hello World"
+
+		//reverse() : 문자열을 뒤집어줌
+		a.reverse();
+		System.out.println(a); 	// "dlroW olleH"
+		a.reverse();
+		
+		//setCharAt() : 특정 위치의 문자 변경
+		a.setCharAt(0, 'h');
+		System.out.println(a);		// "hello World"
+		
+		//setLength() : 문자열 길이 조정
+		//현재 문자열보다 길게 조정하면 공백으로 채워짐
+		//현재 문자열보다 짧게 조정하면 나머지 문자는 삭제됨		
+		System.out.println(a.length());  // 11
+		a.setLength(9);                  // 길이를 9로 줄임
+		System.out.println(a + "끝");    // "Hello Wor끝"
+		a.setLength(11);                 // 길이를 다시 11로 늘림
+		System.out.println(a + "끝");    // "Hello Wor  끝"
+		
+		//trimToSize() : 문자열이 저장된 char[] 배열 사이즈를 현재 문자열 길이와 동일하게 조정
+		//String의 trim()같이 공백제거의 역할을 함(배열의 남는 부분은 공백이므로)
+		System.out.println(a.length());		// 11
+		System.out.println(a.capacity());	// 27		
+		a.trimToSize();
+		System.out.println(a.capacity()); 	// 11
+
+	}
+
+}
