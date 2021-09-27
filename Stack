@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+class Stack2 {
+	int[] data;
+	int top;
+	Stack2() {
+		data = new int[100];
+		top = -1;
+	}
+	void push(int e) {
+		top = top + 1;
+		data[top] = e;
+	}
+	void pop() {
+		top = top - 1;
+	}
+	int top() {
+		return data[top];
+		
+	}
+	boolean empty() {
+		return top == -1;		
+	}
+	
+}
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner scan = new Scanner(System.in);
+		Stack2 stack = new Stack2();
+		for(int i=0; i<10; i++) {
+			stack.push(scan.nextInt());
+		}
+		while(stack.empty()==false) {
+			System.out.println(stack.top());
+			stack.pop();
+		}
+
+	}
+
+}
