@@ -1,0 +1,75 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class Main9 {	//백준 #1193
+	
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		
+		//Scanner sc = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+		
+		String str = br.readLine();
+//		StringTokenizer st = new StringTokenizer(str);
+//		System.out.println(st.nextToken());
+//		System.out.println(st.nextToken());
+//		bw.write(st.nextToken()+"\n");
+//		bw.write(str+"\n");
+		
+//		String arr[] = str.split(" ");
+		
+		int N = Integer.parseInt(str);
+		
+		/*
+		 * 분모와 분자를 나누어 따로 계산
+		 * 분모와 분자를 각각 cnt_a, cnt_b를 이용해 N이 몇째 줄에 해당하는지 구한 후,
+		 * 수열의 일반항과 각 규칙을 이용함
+		 */
+		
+		int a = 0;
+		int cnt_a = 1;
+		while(true) {
+			a = a + (1+4*(cnt_a-1));
+			if(N<=a) break;
+			cnt_a++;
+		}
+		int d_a = N-(a-(4*cnt_a-3));
+		int center_a = 2*cnt_a-1;
+		int r_a;
+		if(d_a<=(4*cnt_a-3)/2 + 1) r_a = d_a;
+		else {
+			d_a = d_a - ((4*cnt_a-3)/2 + 1);
+			r_a = center_a - d_a;
+		}
+		
+		int b = 0;
+		int cnt_b = 1;
+		while(true) {
+			b = b + (3+4*(cnt_b-1));
+			if(N<=b) break;
+			cnt_b++;
+		}
+		int d_b = N-(b-(4*cnt_b-1));
+		int center_b = 2*cnt_b;
+		int r_b;
+		if(d_b<=(4*cnt_b-1)/2 + 1) r_b = d_b;
+		else {
+			d_b = d_b - ((4*cnt_b-1)/2 + 1);
+			r_b = center_b - d_b;
+		}
+		
+		bw.write(String.valueOf(r_a)+"/"+String.valueOf(r_b));
+		
+		
+		bw.flush();
+		bw.close();
+		
+	}
+
+}
